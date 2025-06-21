@@ -24,6 +24,20 @@ revolte:
             port: 8080
             variables:
               BASE_URL: /api/v1
+              DATABASE_URL: >-
+                mongodb+srv://mukilanseetharaman:Password123@cluster0.9vp2xcl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+              DATABASE_PORT: '3001'
+              DATABASE_USERNAME: mukilanseetharaman
+              DATABASE_PASSWORD: Password123
+              DATABASE_NAME: appointment-scheduler
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: postgres
     staging:
       branch: staging
       services:
@@ -40,6 +54,22 @@ revolte:
             port: 8080
             variables:
               BASE_URL: /api/v1
+              DATABASE_URL: >-
+                mongodb+srv://mukilanseetharaman:Password123@cluster0.9vp2xcl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+              DATABASE_PORT: '3001'
+              DATABASE_USERNAME: mukilanseetharaman
+              DATABASE_PASSWORD: Password123
+              DATABASE_NAME: appointment-scheduler
+              DATABASE_CONNECTION_STRING: >-
+                mongodb+srv://mukilanseetharaman:Password123@cluster0.9vp2xcl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: postgres
     qa:
       branch: qa
       services:
@@ -56,6 +86,20 @@ revolte:
             port: 8080
             variables:
               BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+              DATABASE_CONNECTION_STRING: '#{db.dbConnectionString}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: postgres
     preview:
       services:
         rid_1:
@@ -71,3 +115,17 @@ revolte:
             port: 8080
             variables:
               BASE_URL: /api/v1
+              DATABASE_URL: '#{db.dbUrl}'
+              DATABASE_PORT: '#{db.dbPort}'
+              DATABASE_USERNAME: '#{db.dbUsername}'
+              DATABASE_PASSWORD: '#{db.dbPassword}'
+              DATABASE_NAME: '#{db.dbName}'
+              DATABASE_CONNECTION_STRING: '#{db.dbConnectionString}'
+        rid_2:
+          name: db
+          type: DATABASE
+          specifications:
+            cpu: 2
+            memory: 4
+            storage: 50
+            engine: postgres
