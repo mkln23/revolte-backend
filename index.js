@@ -10,6 +10,12 @@ app.get("/api/v1/home", (req, res) => {
   });
 });
 
+app.get("/api/v1/health", (req, res) => {
+  res.json({
+    health: "App is running good"
+  })
+})
+
 app.post("/api/v1/user", (req, res) => {
   console.log(req.body)
   res.json({
